@@ -28,8 +28,6 @@ def outputConstruction(m_interestFactor):
                 l,c = i,j
     rank.append(l)
     rank.append(c)
-    print(rank)
-    print(rank[-1])
     max_factor = 0
     while len(rank) != len(m_interestFactor):
         c = rank[-1]
