@@ -12,8 +12,7 @@ def lectureFichier(filepath):
         contenu[i].insert(0,i)
 
     resultat, indice = mergeVertical(contenu)
-    print(resultat)
-    print(indice)
+    #print(resultat);print(indice)
     return resultat, indice
 
 
@@ -40,6 +39,16 @@ def mergeVertical(liste):
             tabIndice.append([liste[i][0]])
     return result, tabIndice
 
+def ecritureFichier(filePath, slides, indice):
+    mon_fichier = open(filePath, "w")
+    mon_fichier.write(str(len(slides))+"\n")
+    for i in slides:
+        if len(indice[i]) ==1:
+            mon_fichier.write(str(indice[i][0])+"\n")
+        else :
+            mon_fichier.write(str(indice[i][0])+" " +str(indice[i][1])+"\n")
 
 #print(lectureFichier("a_example.txt"))
-lectureFichier("a_example.txt")
+slides =[0,2,1]
+resultat, indice = lectureFichier("a_example.txt")
+ecritureFichier("a_example_result.txt",slides,indice)
