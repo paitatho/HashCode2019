@@ -49,6 +49,3 @@ def ecritureFichier(filePath, slides, indice):
             mon_fichier.write(str(indice[i][0])+" " +str(indice[i][1])+"\n")
 
 #print(lectureFichier("a_example.txt"))
-slides =[0,2,1]
-resultat, indice = lectureFichier("a_example.txt")
-ecritureFichier("a_example_result.txt",slides,indice)
