@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import math
-import numpy as np
 import itertools as it
 from thomas import *
 
@@ -27,13 +26,42 @@ m_commonTags
 def interestFactor(dataset, m_commonTags):
     matrice = [[0]*len(dataset) for _ in range(len(dataset))]
     for i in range(len(dataset)):
-        for j in range(len(dataset)):    
+        for j in range(i, len(dataset)):    
             res = min(m_commonTags[i][j], min(int(dataset[i][0]) - m_commonTags[i][j] , int(dataset[j][0]) - m_commonTags[i][j]))   
             matrice[i][j] = res
-    print(matrice)
+            matrice[j][i] = res
     return matrice
 
 m_interestFactor = interestFactor(dt, m_commonTags)
-print(m_interestFactor)
+m_interestFactor
 
+
+def outputConstruction(m_interestFactor):
+    # Initialisation
+    max_factor = 0
+    l,c = 0,0
+    rank = []
+    for i in range(len(m_interestFactor)):
+        for j in range(i,len(m_interestFactor)):
+            if max_factor < m_interestFactor[i][j]:
+                max_factor = m_interestFactor[i][j]
+                l,c = i,j
+    rank.append(l)
+    rank.append(c)
+    print(rank)
+    print(rank[-1])
+    max_factor = 0
+    while len(rank) != len(m_interestFactor):
+        c = rank[-1]
+        for i in range(len(m_interestFactor)):
+            if i not in rank and max_factor < m_interestFactor[i][c]:
+                max_factor = 0
+                l = i
+        rank.append(l)                    
+    return rank
+
+m_interestFactor
+rank = outputConstruction(m_interestFactor)
     
+
+ 
