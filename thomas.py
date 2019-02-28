@@ -5,9 +5,41 @@ def lectureFichier(filepath):
     mon_fichier = open(filepath, "r")
     contenu = mon_fichier.read()
     contenu = contenu.split("\n")
-
+    contenu.pop(0)
+    contenu.pop(len(contenu)-1)
     for i in range(0,len(contenu)):
         contenu[i] = contenu[i].split(" ")
-        
-    return contenu
+        contenu[i].insert(0,i)
 
+    resultat, indice = mergeVertical(contenu)
+    print(resultat)
+    print(indice)
+    return resultat, indice
+
+
+def mergeVertical(liste):
+    indice1 = -1
+    result = list()
+    tabIndice = list()
+    for i in range(0,len(liste)):
+        if liste[i][1] == 'V':
+            if indice1 == -1:
+                indice1 = i
+                tmp = liste[i][3:]
+            else :
+                tmp = tmp + liste[i][3:]
+                merge = list(set(tmp))
+                merge.insert(0,len(merge))
+                result.append(merge)
+                tabIndice.append([indice1,i])
+                tmp =[]
+                indice1 = -1
+                
+        else:
+            result.append(liste[i][2:])
+            tabIndice.append([liste[i][0]])
+    return result, tabIndice
+
+
+#print(lectureFichier("a_example.txt"))
+lectureFichier("a_example.txt")
