@@ -1,7 +1,14 @@
 # -*-coding:UTF8 -*
-import os
+from math import *
 
-def test():
-    print ("yo")
+def lectureFichier():
+    mon_fichier = open("a_example.txt", "r")
+    contenu = mon_fichier.read()
+    contenu = contenu.split("\n")
 
-test()
+    for i in range(0,len(contenu)):
+        contenu[i] = contenu[i].split(" ")
+        
+    return contenu
+
+lectureFichier()
