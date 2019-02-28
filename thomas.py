@@ -1,8 +1,7 @@
 # -*-coding:UTF8 -*
 import os
 
-def main():
+def test():
     print ("yo")
 
-main()
-
+test()
