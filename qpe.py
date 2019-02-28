@@ -1,8 +1,21 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Feb 28 18:05:00 2019
 
-@author: Quentin
-"""
+import math
+import numpy as np
+import itertools as it
+
+class NomClasse:
+    #ici variable globales
+    def __init__(self):
+        self.attribut = 2
+
+
+    def fonction(self, argument):
+        return self.attribut + argument
+
+
+C = NomClasse()
+print(C.fonction(1))
+
 
 
