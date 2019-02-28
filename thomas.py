@@ -1,8 +1,8 @@
 # -*-coding:UTF8 -*
 from math import *
 
-def lectureFichier():
-    mon_fichier = open("a_example.txt", "r")
+def lectureFichier(filepath):
+    mon_fichier = open(filepath, "r")
     contenu = mon_fichier.read()
     contenu = contenu.split("\n")
 
@@ -11,4 +11,3 @@ def lectureFichier():
         
     return contenu
 
-lectureFichier()
